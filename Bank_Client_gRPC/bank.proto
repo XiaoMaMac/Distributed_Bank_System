@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package bank;
+
+service create {
+    rpc MsgDelivery(clientRequest) returns (branchResponse);
+    rpc propagate (BranchRequest) returns (updateResponse);
+}
+
+message clientRequest {
+    int32 ID = 1;
+    int32 EventID = 2;
+    string Interface = 3;
+    int64 Money = 4;
+}
+
+message branchResponse {
+    int32 ID = 2;
+    int64 Balance = 1;
+    string Status = 3;
+}
+
+message BranchRequest {
+    int32 ID = 1;
+    int32 EventID = 2;
+    string Interface = 3;
+    int64 Money = 4;
+}
+
+message updateResponse {
+    string BResponse = 1;
+}
