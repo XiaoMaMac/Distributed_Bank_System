@@ -1,0 +1,3 @@
+{"id": 1, "recv": [{"interface": "query", "result": "success, at branch1", "money": 500}]}
+{"id": 2, "recv": [{"interface": "deposit", "result": "success, at branch2"}, {"interface": "query", "result": "success, at branch2", "money": 500}]}
+{"id": 3, "recv": [{"interface": "withdraw", "result": "success, at branch3"}, {"interface": "query", "result": "success, at branch3", "money": 500}]}
