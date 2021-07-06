@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package bank;
+
+service create {
+    rpc MsgDeliveryRead(clientRequestRead) returns (branchResponse);
+    rpc MsgDeliveryWrite(clientRequestWrite) returns (branchResponse);
+    rpc propagate (BranchRequest) returns (updateResponse);
+}
+
+message clientRequestRead {
+    int32 ID = 1;
+    string Interface = 2;
+    int64 LastEventID =3;
+}
+
+message clientRequestWrite {
+    int32 ID = 1;
+    string Interface = 3;
+    int64 Money = 4;
+    int64 LastEventID = 5;
+}
+
+message branchResponse {
+    int32 ID = 2;
+    int64 Balance = 1;
+    string Status = 3;
+    int32 AssignedEventID = 4;
+}
+
+message BranchRequest {
+    int32 ID = 1;
+    int32 AssignedEventID = 2;
+    string Interface = 3;
+    int64 Money = 4;
+    int32 Clock = 5;
+}
+
+message updateResponse {
+    string BResponse = 1;
+    int32 BClock = 2; 
+}
